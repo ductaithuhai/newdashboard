@@ -5,7 +5,6 @@ import Dashboard from './components/dashboard'
 import Layout from './components/shared/layout';
 import User from './features/pages/users';
 import {
-  Router,
   Routes,
   Route,
 } from "react-router-dom";

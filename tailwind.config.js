@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  mode: "jit",
-  // These paths are just examples, customize them to match your project structure
-  purge: ["./**/*.html", "./src/**/*.{js,jsx,ts,tsx,vue}"],
-  content: [],
-  theme: {
-    extend: {},
+export const content = ["./src/**/**/*.{html,js,jsx,ts,tsx}"];
+export const theme = {
+  extend: {
+    colors: {
+      customColor: "#1c92d2",
+    },
+    fontFamily: {
+      sans: ["Inter", "sans-serif"],
+    },
   },
-  plugins: [],
 };
+export const plugins = [];
