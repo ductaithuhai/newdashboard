@@ -3,7 +3,7 @@ import Pagination from './pagination';
 import AddUserForm from './addUserForm';
 import * as XLSX from 'xlsx';
 
-const usersData = Array.from({ length: 60 }, (_, i) => ({
+const usersData = Array.from({ length: 100 }, (_, i) => ({
     id: i + 1,
     email: `email${i + 1}@gmail.com`,
     phoneNumber: `0911${String(i).padStart(6, '0')}`,
@@ -15,6 +15,7 @@ const usersData = Array.from({ length: 60 }, (_, i) => ({
 const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(10);
+    const [users, setUsers] = useState([]);
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterRole, setFilterRole] = useState('');
@@ -80,11 +81,11 @@ const Users = () => {
         setCurrentPage(1);
     };
 
-    const onSubmitProp = (data) => {
-        console.log('New User:', data);
-        // Add the new user to the list or send it to the backend
+    const onSubmitProp = (newUser) => {
+        setUsers((prevUsers) => {
+            return [...prevUsers, newUser];
+        });
     };
-
     return (
         <>
             <div className='bg-white w-full h-full flex justify-center items-center'>
@@ -179,7 +180,6 @@ const Users = () => {
                 <AddUserForm onSubmit={onSubmitProp} toggleForm={toggleFormProp} />
             )}
         </>
-
     );
 };
 
