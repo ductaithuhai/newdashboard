@@ -1,8 +1,5 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
 import Sidebar from "../sidebar";
 import Header from "../header";
-import Dashboard from "../dashboard";
 import Users from "../../features/pages/users/components/index";
 
 function Layout() {

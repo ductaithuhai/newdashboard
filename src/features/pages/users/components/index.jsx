@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Pagination from './pagination';
 import AddUserForm from './addUserForm';
 import * as XLSX from 'xlsx';
@@ -98,14 +98,14 @@ const Users = () => {
                     </div>
 
                     <div className='flex flex-col sm:flex-row justify-between items-center gap-3'>
-                        <input className='rounded-lg p-2 w-full sm:w-1/2 lg:w-1/3 text-xs sm:text-sm md:text-base' 
-                            type="text" 
-                            placeholder="Search by email, first name, last name..." 
-                            value={searchTerm} 
-                            onChange={handleSearchChange} 
+                        <input className='rounded-lg p-2 w-full sm:w-1/2 lg:w-1/3 text-xs sm:text-sm md:text-base'
+                            type="text"
+                            placeholder="Search by email, first name, last name..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
                         />
-                        <select className='rounded-lg px-2 text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base' 
-                            value={filterRole} 
+                        <select className='rounded-lg px-2 text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base'
+                            value={filterRole}
                             onChange={handleFilterRoleChange}
                         >
                             <option value="">All Roles</option>
@@ -146,7 +146,7 @@ const Users = () => {
                             </table>
                         </div>
                     </div>
-                    
+
                     <div className='w-full flex flex-col sm:flex-row justify-between items-center gap-3'>
                         <div className='text-white text-xs sm:text-sm md:text-base'>
                             {indexOfFirstUser + 1}-{indexOfLastUser} of {filteredUsers.length}
