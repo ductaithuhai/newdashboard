@@ -135,7 +135,7 @@ const AddUserForm = ({ onSubmit, toggleForm }) => {
                     </div>
                 </form>
             </div>
-            <div className='p-5 flex justify-center items-center bg-white rounded-lg border border-blue-500'>
+            <div className='p-5 flex justify-center items-center bg-white rounded-r-3xl border border-blue-500'>
                 <div className="flex flex-col items-center gap-5">
                     <div className='text-blue-500'>Profile Picture</div>
                     <img className='w-40 h-40 bg-blue-500'

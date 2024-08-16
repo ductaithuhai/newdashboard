@@ -3,19 +3,17 @@ import Pagination from './pagination';
 import AddUserForm from './addUserForm';
 import * as XLSX from 'xlsx';
 
-const usersData = Array.from({ length: 100 }, (_, i) => ({
-    id: i + 1,
-    email: `email${i + 1}@gmail.com`,
-    phoneNumber: `0911${String(i).padStart(6, '0')}`,
-    firstName: `Firstname${i + 1}`,
-    lastName: `Lastname${i + 1}`,
-    role: 'User',
-}));
-
 const Users = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [usersPerPage, setUsersPerPage] = useState(10);
-    const [users, setUsers] = useState([]);
+    const [usersData, setUsersData] = useState(Array.from({ length: 100 }, (_, i) => ({
+        id: i + 1,
+        email: `email${i + 1}@gmail.com`,
+        phoneNumber: `0911${String(i).padStart(6, '0')}`,
+        firstName: `Firstname${i + 1}`,
+        lastName: `Lastname${i + 1}`,
+        role: 'User',
+    })));
     const [showAddUserForm, setShowAddUserForm] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterRole, setFilterRole] = useState('');
@@ -30,7 +28,7 @@ const Users = () => {
     const totalPages = Math.ceil(usersData.length / usersPerPage);
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUsers = usersData.slice(indexOfFirstUser, indexOfLastUser);
+    const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
     const goToNextPage = () => {
         if (currentPage < totalPages) {
@@ -66,9 +64,7 @@ const Users = () => {
     };
 
     const toggleFormProp = () => {
-        console.log("truoc:", showAddUserForm);
         setShowAddUserForm(!showAddUserForm);
-        console.log("sau:", !showAddUserForm);
     };
 
     const handleSearchChange = (e) => {
@@ -81,80 +77,83 @@ const Users = () => {
         setCurrentPage(1);
     };
 
-    const onSubmitProp = (newUser) => {
-        setUsers((prevUsers) => {
-            return [...prevUsers, newUser];
-        });
+    const onSubmitProp = (user) => {
+        setUsersData((usersData) => [...usersData, user]);
     };
+
     return (
         <>
             <div className='bg-white w-full h-full flex justify-center items-center'>
-                <div className='bg-blue-400 w-5/6 h-5/6 rounded-3xl p-5 grid gap-3 items-center'>
-                    <div className='flex justify-between items-center'>
-                        <div className='text-white text-5xl font-bold'>User</div>
-                        <div className='w-1/4 flex justify-center items-center gap-5 text-blue-500'>
-                            <button className='p-2 bg-white rounded-lg' onClick={exportToExcel}>
+                <div className='bg-blue-400 w-full md:w-5/6 h-full md:h-5/6 rounded-3xl p-5 grid gap-3 items-center'>
+                    <div className='flex flex-col sm:flex-row justify-between items-center'>
+                        <div className='text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-0'>User</div>
+                        <div className='w-full sm:w-1/2 lg:w-1/4 flex justify-between sm:justify-center items-center gap-3 text-blue-500'>
+                            <button className='p-2 bg-white rounded-lg w-1/2 text-xs sm:text-sm md:text-base' onClick={exportToExcel}>
                                 Export to Excel
                             </button>
-                            <button className='p-2 bg-white rounded-lg' onClick={toggleFormProp}>
+                            <button className='p-2 bg-white rounded-lg w-1/2 text-xs sm:text-sm md:text-base' onClick={toggleFormProp}>
                                 {showAddUserForm ? 'Cancel' : 'Add New User'}
                             </button>
                         </div>
                     </div>
 
-                    <div className='flex justify-start gap-3'>
-                        <input className='rounded-lg p-2'
-                            type="text"
-                            placeholder="Search by email, first name, last name..."
-                            value={searchTerm}
-                            onChange={handleSearchChange}
+                    <div className='flex flex-col sm:flex-row justify-between items-center gap-3'>
+                        <input className='rounded-lg p-2 w-full sm:w-1/2 lg:w-1/3 text-xs sm:text-sm md:text-base' 
+                            type="text" 
+                            placeholder="Search by email, first name, last name..." 
+                            value={searchTerm} 
+                            onChange={handleSearchChange} 
                         />
-                        <select className='rounded-lg px-2 text-blue-500' value={filterRole} onChange={handleFilterRoleChange}>
+                        <select className='rounded-lg px-2 text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base' 
+                            value={filterRole} 
+                            onChange={handleFilterRoleChange}
+                        >
                             <option value="">All Roles</option>
                             <option value="User">User</option>
                             <option value="Admin">Admin</option>
                         </select>
 
-                        <button className='bg-white px-2 rounded-lg text-blue-500' onClick={exportToExcel}>
+                        <button className='bg-white px-2 py-2 rounded-lg text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base' onClick={exportToExcel}>
                             Search
                         </button>
                     </div>
 
                     <div className="w-full h-full flex justify-between overflow-auto">
-                        <div className="w-full overflow-auto">
-                            <table className='w-full h-full text-white'>
-                                <thead className='w-full text-left'>
+                        <div className="w-full overflow-x-auto">
+                            <table className='min-w-full text-white text-xs sm:text-sm md:text-base'>
+                                <thead className='hidden md:table-header-group'>
                                     <tr>
-                                        <th className='flex justify-start'>No</th>
-                                        <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Role</th>
+                                        <th className='px-4 py-2'>No</th>
+                                        <th className='px-4 py-2'>Email</th>
+                                        <th className='px-4 py-2'>Phone Number</th>
+                                        <th className='px-4 py-2'>First Name</th>
+                                        <th className='px-4 py-2'>Last Name</th>
+                                        <th className='px-4 py-2'>Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {currentUsers.map((user, index) => (
-                                        <tr key={user.id}>
-                                            <td>{indexOfFirstUser + index + 1}</td>
-                                            <td>{user.email}</td>
-                                            <td>{user.phoneNumber}</td>
-                                            <td>{user.firstName}</td>
-                                            <td>{user.lastName}</td>
-                                            <td>{user.role}</td>
+                                        <tr key={user.id} className="block md:table-row">
+                                            <td className='block md:table-cell px-4 py-2'>{indexOfFirstUser + index + 1}</td>
+                                            <td className='block md:table-cell px-4 py-2'>{user.email}</td>
+                                            <td className='block md:table-cell px-4 py-2'>{user.phoneNumber}</td>
+                                            <td className='block md:table-cell px-4 py-2'>{user.firstName}</td>
+                                            <td className='block md:table-cell px-4 py-2'>{user.lastName}</td>
+                                            <td className='block md:table-cell px-4 py-2'>{user.role}</td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div className='w-full h-full flex justify-end items-center gap-3'>
-                        <div className='text-white'>
-                            {indexOfFirstUser + 1}-{indexOfLastUser} of {usersData.length}
+                    
+                    <div className='w-full flex flex-col sm:flex-row justify-between items-center gap-3'>
+                        <div className='text-white text-xs sm:text-sm md:text-base'>
+                            {indexOfFirstUser + 1}-{indexOfLastUser} of {filteredUsers.length}
                         </div>
 
-                        <div className='usetable'>
-                            <label htmlFor="usersPerPage" className='text-white'>Rows per page: </label>
+                        <div className='flex justify-between items-center text-xs sm:text-sm md:text-base'>
+                            <label htmlFor="usersPerPage" className='text-white mr-2'>Rows per page: </label>
                             <select className="rounded-md text-blue-400" value={usersPerPage} onChange={handleUsersPerPageChange}>
                                 <option value={5}>5</option>
                                 <option value={10}>10</option>
@@ -163,7 +162,7 @@ const Users = () => {
                             </select>
                         </div>
 
-                        <div>
+                        <div className='text-xs sm:text-sm md:text-base'>
                             <Pagination
                                 currentPage={currentPage}
                                 totalPages={totalPages}
