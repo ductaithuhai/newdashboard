@@ -83,9 +83,9 @@ const Users = () => {
 
     return (
         <>
-            <div className='bg-white w-full h-full flex justify-center items-center'>
+            <div className='bg-white col-start-2 col-end-13 w-full h-full flex justify-center items-center'>
                 <div className='bg-blue-400 w-full md:w-5/6 h-full md:h-5/6 rounded-3xl p-5 grid gap-3 items-center'>
-                    <div className='flex flex-col sm:flex-row justify-between items-center'>
+                    <div className='flex sm:flex-row justify-between items-center'>
                         <div className='text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-0'>User</div>
                         <div className='w-full sm:w-1/2 lg:w-1/4 flex justify-between sm:justify-center items-center gap-3 text-blue-500'>
                             <button className='p-2 bg-white rounded-lg w-1/2 text-xs sm:text-sm md:text-base' onClick={exportToExcel}>
@@ -97,14 +97,14 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col sm:flex-row justify-between items-center gap-3'>
+                    <div className='flex sm:flex-row justify-start items-center gap-3'>
                         <input className='rounded-lg p-2 w-full sm:w-1/2 lg:w-1/3 text-xs sm:text-sm md:text-base'
                             type="text"
                             placeholder="Search by email, first name, last name..."
                             value={searchTerm}
                             onChange={handleSearchChange}
                         />
-                        <select className='rounded-lg px-2 text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base'
+                        <select className='rounded-lg px-2 py-2  text-blue-500 w-full sm:w-1/4 lg:w-1/6 text-xs sm:text-sm md:text-base'
                             value={filterRole}
                             onChange={handleFilterRoleChange}
                         >
@@ -119,7 +119,7 @@ const Users = () => {
                     </div>
 
                     <div className="w-full h-full flex justify-between overflow-auto">
-                        <div className="w-full overflow-x-auto">
+                        <div className="w-full overflow-auto">
                             <table className='min-w-full text-white text-xs sm:text-sm md:text-base'>
                                 <thead className='hidden md:table-header-group'>
                                     <tr>
@@ -147,7 +147,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <div className='w-full flex flex-col sm:flex-row justify-between items-center gap-3'>
+                    <div className='w-full flex  sm:flex-row justify-end items-center gap-3'>
                         <div className='text-white text-xs sm:text-sm md:text-base'>
                             {indexOfFirstUser + 1}-{indexOfLastUser} of {filteredUsers.length}
                         </div>

@@ -4,10 +4,12 @@ import Users from "../../features/pages/users/components/index";
 
 function Layout() {
     return (
-        <div className="grid grid-cols-12 h-screen w-screen">
-            <Sidebar />
-            <div className="col-start-2 col-end-13 w-full h-full grid grid-rows-12">
+        <div className="flex flex-col gap-y-8 h-screen w-screen">
+            <div className="w-full max-h-8 sm:max-h-16 grid grid-rows-12">
                 <Header />
+            </div>
+            <div className="flex-1 w-full full grid grid-cols-12">
+                <Sidebar />
                 <Users />
             </div>
         </div>
