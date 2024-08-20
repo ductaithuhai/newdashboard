@@ -1,7 +1,6 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import { dashboard_navigation } from "../../features/ulti/navi";
-import logo from '../../assets/img/logo.png';
 
 const linkClasses = 'w-full flex items-center justify-center gap-2 font-light';
 
