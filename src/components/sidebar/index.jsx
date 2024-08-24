@@ -6,11 +6,11 @@ const linkClasses = 'w-full flex items-center justify-center gap-2 font-light';
 
 function Sidebar() {
     return (
-        <div className='hidden sm:flex col-span-1 bg-blue-400 w-full h-full flex flex-col'>
-            <div className="flex-1 flex flex-col items-center gap-8 text-lg mt-10">
-                <div className="w-4/5 p-7 h-9 bg-white rounded-2xl flex justify-center items-center gap-4">
-                    <i className='fa-solid fa-chalkboard-user'></i>
-                    <div className="md:hidden lg:block text-center">Dashboard</div>
+        <div className='hidden sm:flex cols-span-1 bg-blue-400 w-full h-full sm:flex-col'>
+            <div className="flex flex-col items-center gap-8 text-lg mt-10">
+                <div className="w-5/6 py-7 h-9 bg-white rounded-2xl flex flex-col justify-center items-center gap-1">
+                    <i className='pt-2 fa-solid fa-chalkboard-user lg:text-md'></i>
+                    <div className="md:hidden lg:block lg:text-md text-center lg:pb-1">Dashboard</div>
                 </div>
                 <div className="w-full text-white">
                     {dashboard_navigation.map((item) => (

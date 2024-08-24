@@ -83,21 +83,21 @@ const Users = () => {
 
     return (
         <>
-            <div className='bg-white col-start-2 col-end-13 w-full h-full flex justify-center items-center'>
-                <div className='bg-blue-400 w-full md:w-5/6 h-full md:h-5/6 rounded-3xl p-5 grid gap-3 items-center'>
-                    <div className='flex sm:flex-row justify-between items-center'>
-                        <div className='text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-0'>User</div>
-                        <div className='w-full sm:w-1/2 lg:w-1/4 flex justify-between sm:justify-center items-center gap-3 text-blue-500'>
-                            <button className='p-2 bg-white rounded-lg w-1/2 text-xs sm:text-sm md:text-base' onClick={exportToExcel}>
+            <div className='bg-white col-start-2 col-end-13  w-full h-full flex justify-center items-center'>
+                <div className='bg-blue-400 w-full sm:w-5/6 h-full sm:h-5/6 rounded-3xl p-3 grid gap-3 items-center'>
+                    <div className='w-full flex sm:flex-row justify-between items-center'>
+                        <div className='text-white w-full text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-0'>User</div>
+                        <div className='w-full sm:w-1/2 lg:w-1/4 flex justify-between sm:justify-center items-center gap-1 text-blue-500'>
+                            <button className='p-1 bg-white rounded-lg w-2/5 text-xs sm:text-sm md:text-base' onClick={exportToExcel}>
                                 Export to Excel
                             </button>
-                            <button className='p-2 bg-white rounded-lg w-1/2 text-xs sm:text-sm md:text-base' onClick={toggleFormProp}>
+                            <button className='p-1 bg-white rounded-lg w-2/5 text-xs sm:text-sm md:text-base' onClick={toggleFormProp}>
                                 {showAddUserForm ? 'Cancel' : 'Add New User'}
                             </button>
                         </div>
                     </div>
 
-                    <div className='flex sm:flex-row justify-start items-center gap-3'>
+                    <div className='w-full flex sm:flex-row justify-center items-center gap-1'>
                         <input className='rounded-lg p-2 w-full sm:w-1/2 lg:w-1/3 text-xs sm:text-sm md:text-base'
                             type="text"
                             placeholder="Search by email, first name, last name..."
@@ -121,7 +121,7 @@ const Users = () => {
                     <div className="w-full h-full flex justify-between overflow-auto">
                         <div className="w-full overflow-auto">
                             <table className='min-w-full text-white text-xs sm:text-sm md:text-base'>
-                                <thead className='hidden md:table-header-group'>
+                                <thead className='table-header-group'>
                                     <tr>
                                         <th className='px-4 py-2'>No</th>
                                         <th className='px-4 py-2'>Email</th>
@@ -133,13 +133,13 @@ const Users = () => {
                                 </thead>
                                 <tbody>
                                     {currentUsers.map((user, index) => (
-                                        <tr key={user.id} className="block md:table-row">
-                                            <td className='block md:table-cell px-4 py-2'>{indexOfFirstUser + index + 1}</td>
-                                            <td className='block md:table-cell px-4 py-2'>{user.email}</td>
-                                            <td className='block md:table-cell px-4 py-2'>{user.phoneNumber}</td>
-                                            <td className='block md:table-cell px-4 py-2'>{user.firstName}</td>
-                                            <td className='block md:table-cell px-4 py-2'>{user.lastName}</td>
-                                            <td className='block md:table-cell px-4 py-2'>{user.role}</td>
+                                        <tr key={user.id} className="table-row">
+                                            <td className='table-cell px-4 py-2'>{indexOfFirstUser + index + 1}</td>
+                                            <td className='table-cell px-4 py-2'>{user.email}</td>
+                                            <td className='table-cell px-4 py-2'>{user.phoneNumber}</td>
+                                            <td className='table-cell px-4 py-2'>{user.firstName}</td>
+                                            <td className='table-cell px-4 py-2'>{user.lastName}</td>
+                                            <td className='table-cell px-4 py-2'>{user.role}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -147,7 +147,7 @@ const Users = () => {
                         </div>
                     </div>
 
-                    <div className='w-full flex  sm:flex-row justify-end items-center gap-3'>
+                    <div className='w-full flex sm:flex-row justify-end items-center gap-1 sm:gap-3'>
                         <div className='text-white text-xs sm:text-sm md:text-base'>
                             {indexOfFirstUser + 1}-{indexOfLastUser} of {filteredUsers.length}
                         </div>

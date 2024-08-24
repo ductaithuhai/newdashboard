@@ -3,7 +3,7 @@ import React from 'react';
 const Pagination = ({ currentPage, totalPages, goToNextPage, goToPrevPage, goToFirstPage, goToLastPage }) => {
     return (
         <nav>
-            <ul className="w-full flex justify-center gap-5">
+            <ul className="w-full flex justify-center gap-1 sm:gap-5">
                 <li className={` ${currentPage === 1 ? 'disabled' : ''}`}>
                     <button className="bg-white px-4 rounded-md page-link" onClick={goToFirstPage}>
                         <i className="fa-solid fa-angles-left"></i>
