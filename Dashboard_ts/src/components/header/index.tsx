@@ -1,19 +1,21 @@
-
-
 function Header() {
     return (
-            <div className="w-full h-full bg-orange-400 flex justify-between items-center p-3">
-            <div>HRDept Company</div>
-            <div className="flex justify-center items-center gap-3">
-                    <i className="hidden sm:flex fa-solid fa-bell text-2xl"></i>
-                    <div className="hidden sm:flex sm:flex-col gap-1">
-                        <p>HR Admin 1</p>
-                        <p>Product Manager</p>
+        <div className="w-full h-24 flex justify-between items-center px-3">
+            <div className="px-2 text-3xl font-bold">HRDept Company</div>
+            <div className="flex justify-center items-center gap-16 sm:px-12 px-2">
+                <div className="flex justify-center items-center gap-6 sm:bg-white px-2 rounded-full">
+                    <i className="hidden sm:flex fa-solid fa-bell text-2xl sm:items-center sm:justify-center sm:w-12 sm:h-12 bg-bg-primary sm:px-4 sm:rounded-full"></i>
+                    <div className="hidden sm:flex sm:flex-col sm:justify-between gap-1 sm:w-40 sm:h-16 sm:px-4 ">
+                        <p className="text-xl">HR Admin 1</p>
+                        <p className="text-md">Product Manager</p>
                     </div>
-                    <i className="fa-solid fa-user-tie text-2xl"></i>
+                    <div>
+                        <i className="flex items-center justify-center fa-solid fa-user-tie text-2xl w-12 h-12 sm:bg-bg-primary bg-white sm:px-4 px-0 rounded-full"></i>
+                    </div>
                 </div>
             </div>
-  );
+        </div>
+    );
 }
 
 export default Header;
